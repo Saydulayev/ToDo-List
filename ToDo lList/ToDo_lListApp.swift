@@ -1,6 +1,6 @@
 //
 //  ToDo_lListApp.swift
-//  ToDo lList
+//  ToDo List
 //
 //  Created by Akhmed on 22.09.23.
 //

@@ -14,6 +14,7 @@
 		C0013AAB2ABD96210045BE7E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0013AAA2ABD96210045BE7E /* Persistence.swift */; };
 		C0013AAE2ABD96210045BE7E /* ToDo_lList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0013AAC2ABD96210045BE7E /* ToDo_lList.xcdatamodeld */; };
 		C0013AB52ABD99B00045BE7E /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0013AB42ABD99B00045BE7E /* ItemEditView.swift */; };
+		C002BD132AC0B0B600136963 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C002BD122AC0B0B600136963 /* NewTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		C0013AAA2ABD96210045BE7E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C0013AAD2ABD96210045BE7E /* ToDo_lList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo_lList.xcdatamodel; sourceTree = "<group>"; };
 		C0013AB42ABD99B00045BE7E /* ItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
+		C002BD122AC0B0B600136963 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				C0013AA12ABD96200045BE7E /* ToDo_lListApp.swift */,
 				C0013AA32ABD96200045BE7E /* ContentView.swift */,
 				C0013AB42ABD99B00045BE7E /* ItemEditView.swift */,
+				C002BD122AC0B0B600136963 /* NewTaskView.swift */,
 				C0013AAA2ABD96210045BE7E /* Persistence.swift */,
 				C0013AA52ABD96210045BE7E /* Assets.xcassets */,
 				C0013AAC2ABD96210045BE7E /* ToDo_lList.xcdatamodeld */,
@@ -148,6 +151,7 @@
 			files = (
 				C0013AAE2ABD96210045BE7E /* ToDo_lList.xcdatamodeld in Sources */,
 				C0013AAB2ABD96210045BE7E /* Persistence.swift in Sources */,
+				C002BD132AC0B0B600136963 /* NewTaskView.swift in Sources */,
 				C0013AB52ABD99B00045BE7E /* ItemEditView.swift in Sources */,
 				C0013AA42ABD96200045BE7E /* ContentView.swift in Sources */,
 				C0013AA22ABD96200045BE7E /* ToDo_lListApp.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  ToDo lList
+//  ToDo List
 //
 //  Created by Akhmed on 22.09.23.
 //
@@ -14,7 +14,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var sortOrder: SortOrder = .date
     @State private var filterStatus: FilterStatus? = nil
+    @State private var showingAddTaskSheet = false
 
+    // MARK: - Enums
     enum SortOrder {
         case date, status
     }
@@ -22,14 +24,16 @@ struct ContentView: View {
     enum FilterStatus {
         case completed, notCompleted
     }
-
+    
+    // MARK: - Fetch Request
     @FetchRequest(
         entity: Item.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         predicate: nil,
         animation: .default
     ) private var items: FetchedResults<Item>
-
+    
+    // MARK: - Computed Variables
     private var sortedAndFilteredItems: [Item] {
         var itemList = items.map { $0 }
         
@@ -56,20 +60,27 @@ struct ContentView: View {
                 itemList
             }
             .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
-                    ToolbarItem {
-                        sortingMenu
-                    }
-                    ToolbarItem {
-                        filterMenu
-                    }
-                    ToolbarItem {
-                        addButton
-                    }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
                 }
+                ToolbarItem {
+                    sortingMenu
+                }
+                ToolbarItem {
+                    filterMenu
+                }
+                ToolbarItem {
+                    addButton
+                }
+            }
             .navigationTitle("To-Do List")
+            .sheet(isPresented: $showingAddTaskSheet) {
+                NewTaskView { title, details in
+                    self.addItem(title: title, details: details)
+                    self.showingAddTaskSheet = false
+                }
+                .environment(\.managedObjectContext, self.viewContext)
+            }
         }
     }
 
@@ -121,7 +132,8 @@ struct ContentView: View {
         .id(item.itemUUID)
     }
     
-
+    
+    // MARK: - View Components
     private var sortingMenu: some View {
         Menu {
             Button("Sort by Date", action: { sortOrder = .date })
@@ -142,17 +154,21 @@ struct ContentView: View {
     }
 
     private var addButton: some View {
-        Button(action: addItem) {
+        Button(action: {
+            self.showingAddTaskSheet.toggle()
+        }) {
             Label("Add Item", systemImage: "plus")
         }
     }
 
+    
     // MARK: - Functions
-    private func addItem() {
+    private func addItem(title: String, details: String) {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            newItem.title = "New Task"
+            newItem.title = title
+            newItem.details = details
             newItem.isCompleted = false
             newItem.itemUUID = UUID()
 
@@ -199,6 +215,13 @@ struct ContentView: View {
         }
     }
 }
+
+
+
+
+
+
+
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
